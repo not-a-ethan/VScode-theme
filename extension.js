@@ -84,7 +84,7 @@ function activate(context) {
 					</div>
 				</div>
 
-				<scirpt>
+				<script>
 					const stopStart = document.getElementById("start");
 					const stopStop = document.getElementById("stop");
 					const stopReset = document.getElementById("reset");
