@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "timer.helloWorld",
-        "title": "Hello World"
+        "command": "timer.real",
+        "title": "HTML Hello World"
       }
     ]
   },

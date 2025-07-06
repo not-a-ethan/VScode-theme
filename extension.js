@@ -24,7 +24,29 @@ function activate(context) {
 		vscode.window.showInformationMessage('Hello World from Timer!');
 	});
 
+	const real = vscode.commands.registerCommand('timer.start', function() {
+		let panel = vscode.window.createWebviewPanel(
+			'timer',
+			'Timer',
+			vscode.ViewColumn.One,
+			{}
+		);
+		panel.webview.html = getWebViewContent()
+	});
+
+	function getWebViewContent() {
+		return `
+		<!DOCTYPE html>
+		<html lang="en">
+			<body>
+				<h1>Hello World</h1>
+			</body>
+		</html>
+		`
+	}
+
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(real);
 }
 
 // This method is called when your extension is deactivated
