@@ -36,7 +36,7 @@ function activate(context) {
 
 	function getWebViewContent() {
 		return `
-		<!DOCTYPE html>
+			<!DOCTYPE html>
 		<html lang="en">
 			<head>
 				<style>
@@ -65,11 +65,11 @@ function activate(context) {
 						<h2>Stopwatch</h2>
 
 						<h3>
-							<span class="digit" id="hr">00</span>
+							<span id="hr">0</span>
 							<span>:</span>
-							<span class="digit" id="min">00</span>
+							<span id="min">00</span>
 							<span>:</span>
-							<span class="digit" id="sec">00</span>
+							<span id="sec">00</span>
 						</h3>
 
 						<div id="buttons">
@@ -93,7 +93,7 @@ function activate(context) {
 						min: 0,
 						sec: 0,
 					}
-					let timer = false;
+                    timer = false;
 
 					function stopWatch() {
 						if (timer) {
@@ -112,33 +112,40 @@ function activate(context) {
 							document.getElementById('hr').innerHTML = stopTime.hour;
 
 							if (stopTime.min < 10) {
-								document.getElementById('min').innerHTML = "0" + str(stopTime.min);
+								document.getElementById('min').innerHTML = "0" + stopTime.min.toString();
 							} else {
 							  document.getElementById('min').innerHTML = stopTime.min;
 							}
 
 							if (stopTime.sec < 10) {
-								document.getElementById('sec').innerHTML = "0" + str(stopTime.sec);
+								document.getElementById('sec').innerHTML = "0" + stopTime.sec.toString();
 							} else {
 							  document.getElementById('sec').innerHTML = stopTime.sec;
 							}
+
+                            setTimeout(stopWatch, 1000);
 						}
 					}
 
-					setTimeout(stopWatch, 1000);
-
 					stopStart.addEventListener("click", function () {
 						timer = true;
+                        stopWatch();
 					})
 
-					stopStart.addEventListener("click", function () {
-						stopStop = false;
+					stopStop.addEventListener("click", function () {
+						timer = false;
 					})
 
 					stopReset.addEventListener("click", function () {
 						stopTime.hour = 0;
 						stopTime.min = 0;
 						stopTime.sec = 0;
+                        
+                        document.getElementById('hr').innerHTML = "0";
+                        document.getElementById('min').innerHTML = "00";
+                        document.getElementById('sec').innerHTML = "00";    
+
+                        timer = false;
 					})
 				</script>
 			</body>
