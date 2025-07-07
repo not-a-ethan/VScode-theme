@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "timer.start",
-        "title": "HTML Hello World"
+        "title": "Stop watch and Pomodoro timer"
       }
     ]
   },
