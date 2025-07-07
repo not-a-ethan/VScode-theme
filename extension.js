@@ -29,7 +29,9 @@ function activate(context) {
 			'timer',
 			'Timer',
 			vscode.ViewColumn.One,
-			{}
+			{
+				enableScripts: true
+			}
 		);
 		panel.webview.html = getWebViewContent()
 	});
